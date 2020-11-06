@@ -1,1 +1,1 @@
-# SCS - Simple Chat Service - Backend
+# Microservices-Based Chat - Backend
