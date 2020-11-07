@@ -4,15 +4,15 @@
 
 **FUNCTIONAL REQUIREMENTS**
 
-- [ ] The user should be able sign up in the system with a nickname and password;
+- [x] The user should be able sign up in the system with a nickname and password;
 
 **NON-FUNCTIONAL REQUIREMENTS**
 
-- [ ] The password should be encrypted using bcryptjs
+- [x] The password should be encrypted using bcryptjs
 
 **BUSINESS RULES**
 
-- [ ] The user should not be able to sign up with a nickname that already exists;
+- [x] The user should not be able to sign up with a nickname that already exists;
 
 ## Sign in
 

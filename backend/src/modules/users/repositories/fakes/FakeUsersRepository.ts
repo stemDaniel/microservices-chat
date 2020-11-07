@@ -4,7 +4,7 @@ import User from '../../infra/typeorm/entities/User';
 import IUsersRepository from '../IUsersRepository';
 import ICreateUserDTO from '../../dtos/ICreateUserDTO';
 
-class UsersRepository implements IUsersRepository {
+class FakeUsersRepository implements IUsersRepository {
     private users: User[] = [];
 
     public async create(data: ICreateUserDTO): Promise<User> {
@@ -22,6 +22,12 @@ class UsersRepository implements IUsersRepository {
 
         return user;
     }
+
+    public async findUserByNickname(
+        nickname: string,
+    ): Promise<User | undefined> {
+        return this.users.find(user => user.nickname === nickname);
+    }
 }
 
-export default UsersRepository;
+export default FakeUsersRepository;
