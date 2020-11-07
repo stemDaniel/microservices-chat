@@ -52,7 +52,7 @@
 
 - [ ] The user should be able to leave a room;
 
-## Remove an user out a room
+## Remove a user from a room
 
 **FUNCTIONAL REQUIREMENTS**
 
