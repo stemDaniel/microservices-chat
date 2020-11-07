@@ -27,6 +27,7 @@
         "camelcase": "off",
         "no-useless-constructor": "off",
         "no-unused-expressions": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-unused-vars": ["error", {
             "argsIgnorePattern": "_"
         }],

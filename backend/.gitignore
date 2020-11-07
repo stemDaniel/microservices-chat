@@ -12,3 +12,6 @@ ormconfig.json
 
 ## tests
 coverage
+
+## public html folder to test
+public

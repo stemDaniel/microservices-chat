@@ -29,13 +29,12 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.4.2",
     "reflect-metadata": "^0.1.13",
+    "socket.io": "^3.0.0",
     "tsyringe": "^4.3.0",
     "typeorm": "^0.2.29",
     "uuid": "^8.3.1"
   },
   "devDependencies": {
-    "tsconfig-paths": "^3.9.0",
-    "typescript": "^3.9.7",
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.8",
     "@types/express": "^4.17.7",
@@ -53,6 +52,8 @@
     "jest": "^26.6.3",
     "prettier": "^2.0.5",
     "ts-jest": "^26.4.3",
-    "ts-node-dev": "^1.0.0-pre.56"
+    "ts-node-dev": "^1.0.0-pre.56",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.9.7"
   }
 }
