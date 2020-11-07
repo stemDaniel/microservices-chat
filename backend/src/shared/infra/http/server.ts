@@ -1,7 +1,11 @@
+import 'reflect-metadata';
+
 import { config as configEnvironmentVariables } from 'dotenv';
 import express from 'express';
 
 import '../typeorm';
+
+import '../../container/providers';
 
 configEnvironmentVariables();
 

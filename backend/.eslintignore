@@ -1,3 +1,8 @@
+## js files
 /*.js
+
+## files located at node_modules folder
 node_modules
+
+## files at production folder
 dist
