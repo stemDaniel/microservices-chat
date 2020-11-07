@@ -1,6 +1,6 @@
 # Microservices-Based Chat - Backend
 
-## Sign up
+## :heavy_check_mark: Sign up
 
 **FUNCTIONAL REQUIREMENTS**
 
@@ -26,6 +26,7 @@
 
 **BUSINESS RULES**
 
+- [ ] The user should not be able to sign in with a nickname that does not exists;
 - [ ] The user should not be able to sign in with a incorrect set of nickname and password;
 
 ## Create new rooms
