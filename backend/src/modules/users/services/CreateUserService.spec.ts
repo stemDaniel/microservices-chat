@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import ClientError from '@shared/errors/ClientError';
 import FakeHashProvider from '@shared/container/providers/HashProvider/fakes/FakeHashProvider';
 import CreateUserService from './CreateUserService';

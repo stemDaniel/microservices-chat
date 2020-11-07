@@ -28,6 +28,10 @@ class FakeUsersRepository implements IUsersRepository {
     ): Promise<User | undefined> {
         return this.users.find(user => user.nickname === nickname);
     }
+
+    public async findUserByID(user_id: string): Promise<User | undefined> {
+        return this.users.find(user => user.id === user_id);
+    }
 }
 
 export default FakeUsersRepository;

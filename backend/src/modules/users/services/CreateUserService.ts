@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 import { injectable, inject } from 'tsyringe';
 
 import ClientError from '@shared/errors/ClientError';
