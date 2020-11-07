@@ -1,5 +1,14 @@
+## node modules
 node_modules
+
+## vscode files
 .vscode
 
+## environment
 .env
+
+## database setup
 ormconfig.json
+
+## tests
+coverage
