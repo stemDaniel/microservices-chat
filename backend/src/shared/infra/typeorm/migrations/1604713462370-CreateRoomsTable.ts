@@ -1,9 +1,4 @@
-import {
-    MigrationInterface,
-    QueryRunner,
-    Table,
-    TableForeignKey,
-} from 'typeorm';
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export default class CreateRoomsTable1604713462370
     implements MigrationInterface {
@@ -25,10 +20,6 @@ export default class CreateRoomsTable1604713462370
                         type: 'varchar',
                     },
                     {
-                        name: 'moderator_user_id',
-                        type: 'uuid',
-                    },
-                    {
                         name: 'created_at',
                         type: 'timestamp',
                         default: 'now()',
@@ -36,23 +27,9 @@ export default class CreateRoomsTable1604713462370
                 ],
             }),
         );
-
-        await queryRunner.createForeignKey(
-            'rooms',
-            new TableForeignKey({
-                name: 'ModeratorUserID',
-                columnNames: ['moderator_user_id'],
-                referencedColumnNames: ['id'],
-                referencedTableName: 'users',
-                onDelete: 'CASCADE',
-                onUpdate: 'CASCADE',
-            }),
-        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('rooms', 'ModeratorUserID');
-
         await queryRunner.dropTable('rooms');
     }
 }

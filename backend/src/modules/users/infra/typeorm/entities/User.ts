@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
 
-import Room from '@modules/rooms/infra/typeorm/entities/Room';
+import Join from '@modules/joins/infra/typeorm/entities/Join';
 
 @Entity('users')
 class User {
@@ -24,8 +24,8 @@ class User {
     @CreateDateColumn()
     created_at: Date;
 
-    @OneToMany(() => Room, room => room.moderator)
-    rooms: Room[];
+    @OneToMany(() => Join, join => join.room)
+    joins: Join[];
 }
 
 export default User;

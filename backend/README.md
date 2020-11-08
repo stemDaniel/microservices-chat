@@ -41,11 +41,11 @@
 - [x] The user should be authenticated with a JWT token to create a new room;
 - [x] It should not possible to create a room without a valid user;
 
-## Enjoy into a room
+## Join into a room
 
 **FUNCTIONAL REQUIREMENTS**
 
-- [ ] The user should be able to enjoy into one or more rooms;
+- [ ] The user should be able to join into one or more rooms;
 
 ## Leave a room
 
