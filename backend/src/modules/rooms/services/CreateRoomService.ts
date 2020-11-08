@@ -8,7 +8,7 @@ import IRoomsRepository from '../repositories/IRoomsRepository';
 
 interface IRequest {
     moderator_user_id: string;
-    room_name: string;
+    name: string;
 }
 
 @injectable()
@@ -24,10 +24,7 @@ class CreateRoomService {
         private joinsRepository: IJoinsRepository,
     ) {}
 
-    public async execute({
-        moderator_user_id,
-        room_name,
-    }: IRequest): Promise<Room> {
+    public async execute({ moderator_user_id, name }: IRequest): Promise<Room> {
         const verifyIfModeratorExists = await this.usersRepository.findUserByID(
             moderator_user_id,
         );
@@ -39,7 +36,7 @@ class CreateRoomService {
         }
 
         const room = await this.roomsRepository.create({
-            name: room_name,
+            name,
         });
 
         await this.joinsRepository.create({

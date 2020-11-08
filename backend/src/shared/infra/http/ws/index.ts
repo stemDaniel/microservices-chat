@@ -1,15 +1,8 @@
 import socketio, { Socket } from 'socket.io';
 import { Server } from 'http';
 
-interface IJoinRoom {
-    room_name: string;
-    user_id: string;
-}
-
-interface ILeaveRoom {
-    room_name: string;
-    user_id: string;
-}
+import attachJoinRoomSocket from '@modules/joins/infra/ws/sockets/attachJoinRoomSocket';
+import attachLeaveRoomSocket from '@modules/joins/infra/ws/sockets/attachLeaveRoomSocket';
 
 interface IChatMessage {
     message: string;
@@ -24,13 +17,8 @@ const estabilishWSAttachedOnHTTP = (server: Server): void => {
     io.on('connection', (socket: Socket) => {
         socket.emit('message', 'WS estabilished!');
 
-        socket.on('joinRoom', ({ room_name, user_id }: IJoinRoom) => {
-            socket.join(room_name);
-
-            socket
-                .to(room_name)
-                .broadcast.emit('message', `${user_id} has join the room!`);
-        });
+        attachJoinRoomSocket(socket);
+        attachLeaveRoomSocket(socket);
 
         socket.on(
             'message',
@@ -38,12 +26,6 @@ const estabilishWSAttachedOnHTTP = (server: Server): void => {
                 io.to(room_name).emit('message', `${user_id} | ${message}!`);
             },
         );
-
-        socket.on('leaveRoom', ({ user_id, room_name }: ILeaveRoom) => {
-            socket
-                .to(room_name)
-                .broadcast.emit('message', `${user_id} has left the room!`);
-        });
     });
 };
 

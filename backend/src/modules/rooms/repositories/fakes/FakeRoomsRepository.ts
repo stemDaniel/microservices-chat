@@ -22,6 +22,10 @@ class FakeRoomsRepository implements IRoomsRepository {
 
         return room;
     }
+
+    public async findRoomByID(room_id: string): Promise<Room | undefined> {
+        return this.rooms.find(room => room.id === room_id);
+    }
 }
 
 export default FakeRoomsRepository;

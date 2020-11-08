@@ -41,17 +41,28 @@
 - [x] The user should be authenticated with a JWT token to create a new room;
 - [x] It should not possible to create a room without a valid user;
 
-## Join into a room
+## :heavy_check_mark: Join a room
 
 **FUNCTIONAL REQUIREMENTS**
 
-- [ ] The user should be able to join into one or more rooms;
+- [x] The user should be able to join one or more rooms;
 
-## Leave a room
+**BUSINESS RULES**
+
+- [x] It should not be possible for a user who does not exists to join the room;
+- [x] It should not be possible for a user to join a room that does not exists;
+
+## :heavy_check_mark: Leave a room
 
 **FUNCTIONAL REQUIREMENTS**
 
-- [ ] The user should be able to leave a room;
+- [x] The user should be able to leave a room;
+
+**BUSINESS RULES**
+
+- [x] The user should not be able to leave a room if his does not exists;
+- [x] The user should not be able to leave a room if his already left;
+- [x] The user should not be able to leave another user from the room;
 
 ## Remove a user from a room
 

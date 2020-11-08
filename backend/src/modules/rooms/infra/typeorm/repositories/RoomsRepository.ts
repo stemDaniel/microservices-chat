@@ -19,6 +19,14 @@ class RoomsRepository implements IRoomsRepository {
 
         return room;
     }
+
+    public async findRoomByID(room_id: string): Promise<Room | undefined> {
+        const room = await this.ormRepository.findOne({
+            where: { id: room_id },
+        });
+
+        return room;
+    }
 }
 
 export default RoomsRepository;

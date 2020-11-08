@@ -31,7 +31,7 @@ describe('CreateRoom', () => {
         });
 
         const room = await createRoom.execute({
-            room_name: 'some room name',
+            name: 'some room name',
             moderator_user_id: moderator.id,
         });
 
@@ -41,7 +41,7 @@ describe('CreateRoom', () => {
     it('should not be able to create a new room with a user that does not exists as moderator', async () => {
         await expect(
             createRoom.execute({
-                room_name: 'some room name',
+                name: 'some room name',
                 moderator_user_id: 'a user that does not exists',
             }),
         ).rejects.toBeInstanceOf(ClientError);

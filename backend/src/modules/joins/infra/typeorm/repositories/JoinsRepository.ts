@@ -1,5 +1,6 @@
 import { EntityRepository, getRepository, Repository } from 'typeorm';
 
+import IFindJoinByUserAndRoomDTO from '@modules/joins/dtos/IFindJoinByUserAndRoomDTO';
 import Join from '../entities/Join';
 import ICreateJoinDTO from '../../../dtos/ICreateJoinDTO';
 import IJoinsRepository from '../../../repositories/IJoinsRepository';
@@ -18,6 +19,21 @@ class JoinsRepository implements IJoinsRepository {
         await this.ormRepository.save(join);
 
         return join;
+    }
+
+    public async findJoinByUserIDAndRoomID({
+        user_id,
+        room_id,
+    }: IFindJoinByUserAndRoomDTO): Promise<Join | undefined> {
+        const join = await this.ormRepository.findOne({
+            where: { user_id, room_id },
+        });
+
+        return join;
+    }
+
+    public async delete(join_id: string): Promise<void> {
+        await this.ormRepository.delete(join_id);
     }
 }
 
