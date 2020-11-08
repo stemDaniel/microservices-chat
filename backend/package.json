@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "celebrate": "^13.0.4",
     "class-transformer": "^0.3.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -29,6 +30,7 @@
     "ioredis": "^4.19.2",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.4.2",
+    "rate-limiter-flexible": "^2.1.13",
     "reflect-metadata": "^0.1.13",
     "socket.io": "^3.0.0",
     "tsyringe": "^4.3.0",

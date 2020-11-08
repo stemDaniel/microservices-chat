@@ -89,3 +89,8 @@
 - [ ] It is not possible to remove a user that does not exist;
 - [ ] It is not possible to remove a user who is not in the room;
 - [ ] The moderator must be authenticated to use this function;
+
+## General
+
+- [x] All data received from request must be validated by celebrate before being sent to the controllers;
+- [x] Rate limiter must be implemented to avoid brute force attacks

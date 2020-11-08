@@ -9,10 +9,12 @@ import express from 'express';
 import http from 'http';
 import path from 'path';
 import cors from 'cors';
+import { errors as handleCelebrateErrors } from 'celebrate';
 
 import routes from './routes/index.routes';
 import estabilishWSAttachedOnHTTP from './ws';
-import handleErrors from './middlewares/handleErrors';
+import handleClientErrors from './middlewares/handleClientErrors';
+import expressRateLimiter from './middlewares/expressRateLimiter';
 
 const app = express();
 const server = http.createServer(app);
@@ -24,8 +26,10 @@ estabilishWSAttachedOnHTTP(server);
 app.use(express.static(publicFolder));
 app.use(cors());
 app.use(express.json());
+app.use(expressRateLimiter);
 app.use(routes);
-app.use(handleErrors);
+app.use(handleCelebrateErrors());
+app.use(handleClientErrors);
 
 server.listen(serverPort, () => {
     console.log(`Backend running on port ${serverPort}`); // eslint-disable-line
