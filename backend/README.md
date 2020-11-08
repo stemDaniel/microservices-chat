@@ -45,11 +45,11 @@
 
 **FUNCTIONAL REQUIREMENTS**
 
-- [ ] The user should be able to list all rooms;
+- [x] The user should be able to list all rooms;
 
 **NON-FUNCTIONAL REQUIREMENTS**
 
-- [ ] The rooms list should be cached using redis;
+- [x] The rooms list should be cached using redis;
 - [ ] The moderator must be authenticated to use this function;
 
 ## Join a room

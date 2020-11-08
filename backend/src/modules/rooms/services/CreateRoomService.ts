@@ -3,6 +3,7 @@ import { injectable, inject } from 'tsyringe';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import ClientError from '@shared/errors/ClientError';
 import IJoinsRepository from '@modules/joins/repositories/IJoinsRepository';
+import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
 import Room from '../infra/typeorm/entities/Room';
 import IRoomsRepository from '../repositories/IRoomsRepository';
 
@@ -22,6 +23,9 @@ class CreateRoomService {
 
         @inject('JoinsRepository')
         private joinsRepository: IJoinsRepository,
+
+        @inject('CacheProvider')
+        private cacheProvider: ICacheProvider,
     ) {}
 
     public async execute({ moderator_user_id, name }: IRequest): Promise<Room> {
@@ -44,6 +48,8 @@ class CreateRoomService {
             user_id: moderator_user_id,
             is_moderator: true,
         });
+
+        await this.cacheProvider.invalidate('rooms');
 
         return room;
     }

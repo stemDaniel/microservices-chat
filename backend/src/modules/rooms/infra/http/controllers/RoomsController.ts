@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { container } from 'tsyringe';
 
 import CreateRoomService from '../../../services/CreateRoomService';
+import FindAllRoomsService from '../../../services/FindAllRoomsService';
 
 class RoomsController {
     public async create(
@@ -28,6 +29,18 @@ class RoomsController {
         });
 
         return response.json(room);
+    }
+
+    public async index(
+        request: Request,
+        response: Response,
+        _: NextFunction,
+    ): Promise<Response> {
+        const findAllRooms = container.resolve(FindAllRoomsService);
+
+        const rooms = await findAllRooms.execute();
+
+        return response.json(rooms);
     }
 }
 

@@ -23,6 +23,10 @@ class FakeRoomsRepository implements IRoomsRepository {
         return room;
     }
 
+    public async findAll(): Promise<Room[]> {
+        return this.rooms;
+    }
+
     public async findRoomByID(room_id: string): Promise<Room | undefined> {
         return this.rooms.find(room => room.id === room_id);
     }

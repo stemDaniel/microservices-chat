@@ -3,6 +3,7 @@ import ICreateRoomDTO from '../dtos/ICreateRoomDTO';
 
 interface IRoomsRepository {
     create(data: ICreateRoomDTO): Promise<Room>;
+    findAll(): Promise<Room[]>;
     findRoomByID(room_id: string): Promise<Room | undefined>;
 }
 

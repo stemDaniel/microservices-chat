@@ -7,6 +7,7 @@ const roomsRoutes = Router();
 
 const roomsController = new RoomsController();
 
+roomsRoutes.get('/', roomsController.index);
 roomsRoutes.post('/', checkAuth, roomsController.create);
 
 export default roomsRoutes;
