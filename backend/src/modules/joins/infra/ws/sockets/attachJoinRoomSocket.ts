@@ -23,7 +23,10 @@ const attachJoinRoomSocket = (socket: Socket): void => {
 
             socket
                 .to(room_id)
-                .broadcast.emit('message', `${user_id} has joined the room!`);
+                .broadcast.emit(
+                    'chatMessage',
+                    `${user_id} has joined the room!`,
+                );
         } catch (err) {
             if (err instanceof ClientError) {
                 socket.emit(

@@ -77,17 +77,18 @@
 - [x] It is not possible to leave a room that you have already left;
 - [ ] The user must be authenticated to use this function;
 
-## Remove a user from the room
+## Kick a user out of the room
 
 **FUNCTIONAL REQUIREMENTS**
 
-- [ ] The room moderator should be able to remove another user from the room;
+- [x] The room moderator should be able to remove another user from the room;
 
 **BUSINESS RULES**
 
-- [ ] It is not possible to remove a user if you are not the room moderator;
-- [ ] It is not possible to remove a user that does not exist;
-- [ ] It is not possible to remove a user who is not in the room;
+- [x] It is not possible to remove a user if you are not the room moderator;
+- [x] It is not possible to remove a user that does not exist;
+- [x] It is not possible to remove a user who is not in the room;
+- [x] It is not possible to remove a user from a room that does not exist;
 - [ ] The moderator must be authenticated to use this function;
 
 ## General

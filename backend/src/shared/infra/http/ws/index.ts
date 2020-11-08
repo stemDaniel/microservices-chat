@@ -1,8 +1,10 @@
 import socketio, { Socket } from 'socket.io';
 import { Server } from 'http';
 
+import attachCreateRoomSocket from '@modules/rooms/infra/ws/sockets/attachCreateRoomSocket';
 import attachJoinRoomSocket from '@modules/joins/infra/ws/sockets/attachJoinRoomSocket';
 import attachLeaveRoomSocket from '@modules/joins/infra/ws/sockets/attachLeaveRoomSocket';
+import attachKickUserSocket from '@modules/joins/infra/ws/sockets/attachKickUserSocket';
 
 interface IChatMessage {
     message: string;
@@ -15,17 +17,12 @@ const estabilishWSAttachedOnHTTP = (server: Server): void => {
     const io = socketio(server);
 
     io.on('connection', (socket: Socket) => {
-        socket.emit('message', 'WS estabilished!');
+        socket.emit('generalMessage', 'WS estabilished!');
 
+        attachCreateRoomSocket(socket);
         attachJoinRoomSocket(socket);
         attachLeaveRoomSocket(socket);
-
-        socket.on(
-            'message',
-            ({ user_id, room_name, message }: IChatMessage) => {
-                io.to(room_name).emit('message', `${user_id} | ${message}!`);
-            },
-        );
+        attachKickUserSocket(socket);
     });
 };
 

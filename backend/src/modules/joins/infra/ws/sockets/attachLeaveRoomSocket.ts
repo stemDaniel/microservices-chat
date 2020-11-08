@@ -23,7 +23,7 @@ const attachLeaveRoomSocket = (socket: Socket): void => {
 
             socket
                 .to(room_id)
-                .broadcast.emit('message', `${user_id} has left the room!`);
+                .broadcast.emit('chatMessage', `${user_id} has left the room!`);
         } catch (err) {
             if (err instanceof ClientError) {
                 socket.emit(
