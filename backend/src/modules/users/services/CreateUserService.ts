@@ -25,7 +25,7 @@ class CreateUserService {
         );
 
         if (verifyIfUserExists) {
-            throw new ClientError('This nickname is already in use!');
+            throw new ClientError('this nickname is already in use!');
         }
 
         const hashedPassword = await this.hashProvider.generateHash(password);

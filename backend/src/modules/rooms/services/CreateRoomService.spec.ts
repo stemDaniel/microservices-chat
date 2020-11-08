@@ -24,25 +24,25 @@ describe('CreateRoom', () => {
         );
     });
 
-    it('should be able to create a new room with name and moderator', async () => {
+    it('should be able to create a new room', async () => {
         const moderator = await fakeUsersRepository.create({
-            nickname: 'John Doe',
-            password: 'somepasswordverysecretly',
+            nickname: 'Happy user',
+            password: 'verysecretpassword',
         });
 
         const room = await createRoom.execute({
-            name: 'some room name',
+            name: 'Funny room',
             moderator_user_id: moderator.id,
         });
 
         expect(room).toHaveProperty('id');
     });
 
-    it('should not be able to create a new room with a user that does not exists as moderator', async () => {
+    it('should not be able to create a room with a moderator that does not exist', async () => {
         await expect(
             createRoom.execute({
-                name: 'some room name',
-                moderator_user_id: 'a user that does not exists',
+                name: 'Funny room',
+                moderator_user_id: 'User that does not exist',
             }),
         ).rejects.toBeInstanceOf(ClientError);
     });

@@ -20,15 +20,15 @@ describe('AuthenticateUser', () => {
         );
     });
 
-    it('should be able to authenticate a user given nickname and password', async () => {
+    it('should be able to authenticate a user', async () => {
         const createUser = await fakeUsersRepository.create({
-            nickname: 'John Doe',
-            password: 'somethinverysecretly',
+            nickname: 'Happy user',
+            password: 'verysecretpassword',
         });
 
         const response = await authenticateUser.execute({
-            nickname: 'John Doe',
-            password: 'somethinverysecretly',
+            nickname: 'Happy user',
+            password: 'verysecretpassword',
         });
 
         expect(response).toHaveProperty('token');
@@ -38,22 +38,22 @@ describe('AuthenticateUser', () => {
     it('should not be able to authenticate a user that does not exists', async () => {
         await expect(
             authenticateUser.execute({
-                nickname: 'non-existing-user',
-                password: 'somethinverysecretly',
+                nickname: 'User that does not exist',
+                password: 'verysecretpassword',
             }),
         ).rejects.toBeInstanceOf(ClientError);
     });
 
     it('should not be able to authenticate a user with wrong password', async () => {
         await fakeUsersRepository.create({
-            nickname: 'John Doe',
-            password: 'somethinverysecretly',
+            nickname: 'Happy user',
+            password: 'verysecretpassword',
         });
 
         await expect(
             authenticateUser.execute({
-                nickname: 'John Doe',
-                password: 'wrong-password',
+                nickname: 'Happy user',
+                password: 'Wrong password',
             }),
         ).rejects.toBeInstanceOf(ClientError);
     });

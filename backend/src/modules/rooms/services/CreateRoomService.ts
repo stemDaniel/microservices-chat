@@ -31,7 +31,7 @@ class CreateRoomService {
 
         if (!verifyIfModeratorExists) {
             throw new ClientError(
-                'Its not possible to create a room with a moderator that does not exists!',
+                'it is not possible to create a room with a moderator that does not exist!',
             );
         }
 

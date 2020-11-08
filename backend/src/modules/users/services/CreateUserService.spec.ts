@@ -20,14 +20,14 @@ describe('CreateUser', () => {
         );
     });
 
-    it('should be able to create a new user with nickname and password', async () => {
+    it('should be able to create a new user', async () => {
         const user = await createUser.execute({
-            nickname: 'John Doe',
-            password: 'somethingverysecretly',
+            nickname: 'Happy user',
+            password: 'verysecretpassword',
         });
 
         const passwordWasHashed = await fakeHashProvider.compare(
-            'somethingverysecretly',
+            'verysecretpassword',
             user.password,
         );
 
@@ -35,16 +35,16 @@ describe('CreateUser', () => {
         expect(passwordWasHashed).toBe(true);
     });
 
-    it('should not be able to create a new user with a nickname that already exists', async () => {
+    it('should not be able to create a new user with a nickname that is already in use', async () => {
         await createUser.execute({
-            nickname: 'John Doe',
-            password: 'somethingverysecretly',
+            nickname: 'The same user',
+            password: 'verysecretpassword',
         });
 
         await expect(
             createUser.execute({
-                nickname: 'John Doe',
-                password: 'somethingverysecretlyagain',
+                nickname: 'The same user',
+                password: 'ultrasecretpassword',
             }),
         ).rejects.toBeInstanceOf(ClientError);
     });

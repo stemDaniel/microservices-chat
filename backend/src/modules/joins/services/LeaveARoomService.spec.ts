@@ -29,7 +29,7 @@ describe('LeaveARoom', () => {
 
         const user = await fakeUsersRepository.create({
             nickname: 'Happy user',
-            password: 'somethingverysecretly',
+            password: 'verysecretpassword',
         });
 
         const room = await fakeRoomsRepository.create({
@@ -49,10 +49,10 @@ describe('LeaveARoom', () => {
         expect(deleteJoin).toHaveBeenCalledWith(join.id);
     });
 
-    it('should not be able to leave a room with a user that does not exists', async () => {
+    it('should not be able to leave a room without being logged in', async () => {
         await expect(
             leaveARoom.execute({
-                user_id: 'User that does not exists',
+                user_id: 'User that does not exist',
                 room_id: 'Some room',
             }),
         ).rejects.toBeInstanceOf(ClientError);
@@ -61,21 +61,21 @@ describe('LeaveARoom', () => {
     it('should not be able to leave a room that does not exists', async () => {
         const user = await fakeUsersRepository.create({
             nickname: 'Happy user',
-            password: 'somethingverysecretly',
+            password: 'verysecretpassword',
         });
 
         await expect(
             leaveARoom.execute({
-                room_id: 'Room that does not exists',
+                room_id: 'Room that does not exist',
                 user_id: user.id,
             }),
         ).rejects.toBeInstanceOf(ClientError);
     });
 
-    it('should not be able to leave a room if the user is already out of the room', async () => {
+    it('should not be able to leave a room that you have already left', async () => {
         const user = await fakeUsersRepository.create({
             nickname: 'Happy user',
-            password: 'somethingverysecretly',
+            password: 'verysecretpassword',
         });
 
         const room = await fakeRoomsRepository.create({

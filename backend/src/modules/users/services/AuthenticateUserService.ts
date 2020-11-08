@@ -31,7 +31,7 @@ class AuthenticateUserService {
         const user = await this.usersRepository.findUserByNickname(nickname);
 
         if (!user) {
-            throw new ClientError('This user does not exists!');
+            throw new ClientError('wrong credentials!');
         }
 
         const checkIfPasswordIsCorrrect = await this.hashProvider.compare(
@@ -40,7 +40,7 @@ class AuthenticateUserService {
         );
 
         if (!checkIfPasswordIsCorrrect) {
-            throw new ClientError('Wrong password!');
+            throw new ClientError('wrong credentials!');
         }
 
         const { secret, expiresIn } = authConfig;

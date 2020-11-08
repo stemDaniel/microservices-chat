@@ -28,7 +28,7 @@ class LeaveARoomService {
 
         if (!user) {
             throw new ClientError(
-                'Its not possible to left a room with a user that does not exists!',
+                'it is not possible to join a room without being logged in!',
             );
         }
 
@@ -36,7 +36,7 @@ class LeaveARoomService {
 
         if (!room) {
             throw new ClientError(
-                'Its not possible to left a room that does not exists!',
+                'it is not possible to left a room that does not exist!',
             );
         }
 
@@ -47,7 +47,7 @@ class LeaveARoomService {
 
         if (!join) {
             throw new ClientError(
-                'Its not possible to left a room if you already left it!',
+                'it is not possible to leave a room that you have already left!',
             );
         }
 

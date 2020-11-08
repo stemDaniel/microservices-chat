@@ -28,10 +28,13 @@ const attachLeaveRoomSocket = (socket: Socket): void => {
             if (err instanceof ClientError) {
                 socket.emit(
                     'errorMessage',
-                    `Error when trying to leave a room: ${err.message}`,
+                    `Error when trying to leave the room: ${err.message}`,
                 );
             } else {
-                socket.emit('errorMessage', `Internal server error!`);
+                socket.emit(
+                    'errorMessage',
+                    `Internal server error! Please, try again later.`,
+                );
             }
         }
     });

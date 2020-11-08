@@ -24,10 +24,10 @@ describe('JoinARoom', () => {
         );
     });
 
-    it('should be able make user join a room', async () => {
+    it('should be able to a the room', async () => {
         const user = await fakeUsersRepository.create({
             nickname: 'Happy user',
-            password: 'verysecretlypassword',
+            password: 'verysecretpassword',
         });
 
         const room = await fakeRoomsRepository.create({
@@ -42,37 +42,37 @@ describe('JoinARoom', () => {
         expect(join).toHaveProperty('id');
     });
 
-    it('should not be able to join a room if the user does not exists', async () => {
+    it('should not be able to join a room without being logged in', async () => {
         const room = await fakeRoomsRepository.create({
             name: 'Funny room',
         });
 
         await expect(
             joinARoom.execute({
-                user_id: 'Some user that does not exists',
+                user_id: 'User that does not exists',
                 room_id: room.id,
             }),
         ).rejects.toBeInstanceOf(ClientError);
     });
 
-    it('should not be able to join a room that does not exists', async () => {
+    it('should not be able to join a room that does not exist', async () => {
         const user = await fakeUsersRepository.create({
             nickname: 'Happy user',
-            password: 'verysecretlypassword',
+            password: 'verysecretpassword',
         });
 
         await expect(
             joinARoom.execute({
                 user_id: user.id,
-                room_id: 'Some room that does not exists',
+                room_id: 'Room that does not exist',
             }),
         ).rejects.toBeInstanceOf(ClientError);
     });
 
-    it('should not be able to join a room if you already joined', async () => {
+    it('should not be able to join a room that you are already in', async () => {
         const user = await fakeUsersRepository.create({
             nickname: 'Happy user',
-            password: 'verysecretlypassword',
+            password: 'verysecretpassword',
         });
 
         const room = await fakeRoomsRepository.create({

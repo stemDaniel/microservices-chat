@@ -27,7 +27,7 @@ class JoinARoomService {
 
         if (!user) {
             throw new ClientError(
-                'Its not possible to join a room with a user that does not exists!',
+                'it is not possible to join a room without being logged in!',
             );
         }
 
@@ -35,7 +35,7 @@ class JoinARoomService {
 
         if (!room) {
             throw new ClientError(
-                'Its not possible to join a room that does not exists!',
+                'it is not possible to join a room that does not exist!',
             );
         }
 
@@ -48,7 +48,7 @@ class JoinARoomService {
 
         if (verifyIfUserIsAlreadyJoined) {
             throw new ClientError(
-                'Its not possible to join a room that you already joined!',
+                'it is not possible to join a room that you are already in!',
             );
         }
 
