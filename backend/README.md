@@ -91,7 +91,7 @@
 - [x] It is not possible to remove a user from a room that does not exist;
 - [ ] The moderator must be authenticated to use this function;
 
-## General
+## :heavy_check_mark: General
 
 - [x] All data received from request must be validated by celebrate before being sent to the controllers;
 - [x] Rate limiter must be implemented to avoid brute force attacks
